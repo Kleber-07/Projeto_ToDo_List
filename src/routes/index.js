@@ -14,12 +14,6 @@ export default function Routes() {
         <Stack.Navigator>
 
             <Stack.Screen
-                name="Editar"
-                component={Editar}
-                options={{ headerShown: false }}
-            />
-
-            <Stack.Screen
                 name="Welcome"
                 component={Welcome}
                 options={{ headerShown: false }}
@@ -40,6 +34,12 @@ export default function Routes() {
             <Stack.Screen
                 name="Homescreen"
                 component={Homescreen}
+                options={{ headerShown: false }}
+            />
+
+            <Stack.Screen
+                name="Editar"
+                component={Editar}
                 options={{ headerShown: false }}
             />
 

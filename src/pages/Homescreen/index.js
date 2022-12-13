@@ -8,11 +8,15 @@ import { useNavigation } from '@react-navigation/native';
 
 import database from '../../config/Firebaseconfig';
 
-import { doc, collection, onSnapshot, deleteDoc, query, getFirestore, update } from 'firebase/firestore';
+
+import { doc, collection, onSnapshot, deleteDoc, query } from 'firebase/firestore';
 
 import { getAuth, signOut } from "firebase/auth";
 
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import { getDatabase, ref, child, set, update } from "firebase/database";
+
 
 
 
@@ -62,7 +66,9 @@ export default function Homescreen() {
 
 
     // função deletar
-    async function dell(item) { //item vem do return do flatlist
+    async function dell(item) {
+        //item vem do return do flatlist
+
         await deleteDoc(doc(database, "DbProjeto", item)).then(() => {
             console.log("Esse é do logo dell:", item)
         }).catch(() => {
@@ -71,14 +77,22 @@ export default function Homescreen() {
 
     }
 
+
     //função editTarefa
-    async function editDb(description, id) {
-        const edinovo = database.collection("DbProjeto").doc(id);
-        await edinovo.update({ description: description })
-        navigation.navigate("HomeScreen")
-    }
+    // function editTarefa(id, description) {
+    //     const db = getDatabase();
+    //     db.collection.ref('/DbProjeto/' + id).update({
 
+    //         description: "id",
 
+    //     })
+    //         .then(() => {
+    //             console.log("acertou")
+    //         })
+    //         .catch((error) => {
+    //             console.log("ta passando mais n ta achando no banco")
+    //         });
+    // }
 
     return (
 
@@ -93,19 +107,6 @@ export default function Homescreen() {
                     keyExtractor={item => item.id}
                     renderItem={({ item }) => <View style={styles.fundoItem}>
                         <Text style={styles.textItem}>{item.description} </Text>
-                        <TouchableOpacity
-                            onPress={() => {
-                                navigation.navigate("Editar");
-                                //Alert.alert("Estamos na versão B.E.T.A, desculpa pelo transtorno")
-                            }}
-                            style={styles.editTarefa}
-                        >
-                            <Icon name="pencil" size={20}
-                                color='#fff' backgroundColor="#E0343C"
-                                marginLeft={20}
-                            >
-                            </Icon>
-                        </TouchableOpacity>
 
                         <TouchableOpacity
                             onPress={() => {
