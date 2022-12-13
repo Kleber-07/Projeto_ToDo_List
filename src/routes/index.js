@@ -5,7 +5,6 @@ import SignIn from '../pages/SignIn';
 import Registro from '../pages/SignIn/Registro';
 import Homescreen from '../pages/Homescreen';
 import NewServico from '../pages/NewServico';
-import Editar from '../pages/Editar'
 
 const Stack = createNativeStackNavigator();
 
@@ -34,12 +33,6 @@ export default function Routes() {
             <Stack.Screen
                 name="Homescreen"
                 component={Homescreen}
-                options={{ headerShown: false }}
-            />
-
-            <Stack.Screen
-                name="Editar"
-                component={Editar}
                 options={{ headerShown: false }}
             />
 
